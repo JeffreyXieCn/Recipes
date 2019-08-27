@@ -1,10 +1,11 @@
 import { Recipe } from './recipe.model';
-import { EventEmitter } from '@angular/core';
+// import { EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+// import { Subject } from 'rxjs';
 
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  // recipeSelected = new Subject<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
       'A Test Recipe',
