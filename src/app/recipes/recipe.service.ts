@@ -8,27 +8,34 @@ import { Subject } from 'rxjs';
 export class RecipeService {
   // recipeSelected = new Subject<Recipe>();
   recipesChanged = new Subject<Recipe[]>();
-  private recipes: Recipe[] = [
-    new Recipe(
-      'A Test Recipe',
-      'This is simply a test',
-      'https://cdn.pixabay.com/photo/2017/07/16/10/43/recipe-2508859_1280.jpg',
-      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
-    ),
-    new Recipe('Second Recipe', 'A tasty shrimp', 'https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg', [
-      new Ingredient('Buns', 2),
-      new Ingredient('Shrimps', 10)
-    ]),
-    new Recipe('Third Recipe', 'This is a meat stick', 'https://www.nps.gov/subjects/camping/images/recipe_1.jpg', [
-      new Ingredient('Tomatoes', 3),
-      new Ingredient('Eggs', 4)
-    ])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     'A Test Recipe',
+  //     'This is simply a test',
+  //     'https://cdn.pixabay.com/photo/2017/07/16/10/43/recipe-2508859_1280.jpg',
+  //     [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
+  //   ),
+  //   new Recipe('Second Recipe', 'A tasty shrimp', 'https://upload.wikimedia.org/wikipedia/commons/3/39/Recipe.jpg', [
+  //     new Ingredient('Buns', 2),
+  //     new Ingredient('Shrimps', 10)
+  //   ]),
+  //   new Recipe('Third Recipe', 'This is a meat stick', 'https://www.nps.gov/subjects/camping/images/recipe_1.jpg', [
+  //     new Ingredient('Tomatoes', 3),
+  //     new Ingredient('Eggs', 4)
+  //   ])
+  // ];
+
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {}
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipe(id: number): Recipe {
